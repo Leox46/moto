@@ -13,8 +13,8 @@ var options = {
     //user: 'test', // non obbligatori, dato che sono già presenti nell'URI.
     //pass: 'test'
   };
-mongoose.connect('mongodb://user:password@ds149865.mlab.com:49865/db_test', options); // MLAB
-//mongoose.connect('mongodb://localhost:27017/MOTOS', options) // LOCALE
+//mongoose.connect('mongodb://user:password@ds149865.mlab.com:49865/db_test', options); // MLAB
+mongoose.connect('mongodb://localhost:27017/GENERAL', options) // LOCALE
 const db = mongoose.connection;
 db.on('error', err => {
   console.error(`Error while connecting to DB: ${err.message}`);
@@ -116,7 +116,7 @@ router.route('/motos/:moto_id')
     	moto.displacement = req.body.displacement;
     	moto.power = req.body.power;
       // save the moto
-      Moto.save(function (err) {
+      moto.save(function (err) {
         if (err) { res.send(err); }
         res.json(moto);
       });
