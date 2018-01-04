@@ -85,56 +85,56 @@ router.route('/motos')
     }
   });
 
-/*
-// route /motos/moto
-router.route('/assignments/:assignment_id')
 
-  // get the assignment with that id
-  // (accessed at GET http://localhost:8080/api/assignments/:assignment_id)
+// route /motos/moto
+router.route('/motos/:moto_id')
+
+  // get the moto with that id
+  // (accessed at GET http://localhost:8080/api/motos/:moto_id)
   .get(function (req, res) {
     res.status = 200;
     res.setHeader('Content-Type', 'application/json');
-    Assignment.find( {'assignmentId': req.params.assignment_id}, function (err, assignment) {
+    Moto.find( {'motoId': req.params.moto_id}, function (err, moto) {
       if (err) { res.send(err); }
-      res.json(assignment);
+      res.json(moto);
     });
   })
 
-  // update the assignment with this id
-  // (accessed at PUT http://localhost:8080/api/assignments/:assignment_id)
+  // update the moto with this id
+  // (accessed at PUT http://localhost:8080/api/motos/:moto_id)
   .put(function (req, res) {
     res.status = 200;
     res.setHeader('Content-Type', 'application/json');
     // use our bear model to find the bear we want
     // ATTENZIONE!: usare findOne, e non find, altrimenti ritorna una collezione di oggetti, e bisogna estrarre il primo!
-    Assignment.findOne( {'assignmentId': req.params.assignment_id}, function (err, assignment) {
+    Moto.findOne( {'motoId': req.params.moto_id}, function (err, moto) {
       if (err) { res.send(err); }
-      // update the assignments info
-      assignment.assignmentId = req.body.assignmentId;
-    	assignment.studentId = req.body.studentId;
-    	assignment.assignment = req.body.assignment;
-    	assignment.assignmentType = req.body.assignmentType;
-    	assignment.assignmentValuation = req.body.assignmentValuation;
-      // save the assignment
-      assignment.save(function (err) {
+      // update the motos info
+      moto.motoId = req.body.motoId;
+    	moto.manufactor = req.body.manufactor;
+    	moto.model = req.body.model;
+    	moto.displacement = req.body.displacement;
+    	moto.power = req.body.power;
+      // save the moto
+      Moto.save(function (err) {
         if (err) { res.send(err); }
-        res.json(assignment);
+        res.json(moto);
       });
     });
   })
 
-  // delete the assignment with this id
-  // (accessed at DELETE http://localhost:8080/api/assignments/:assignment_id)
+  // delete the moto with this id
+  // (accessed at DELETE http://localhost:8080/api/motos/:moto_id)
   .delete(function (req, res) {
     res.status = 200;
     res.setHeader('Content-Type', 'application/json');
-    Assignment.remove( {'assignmentId': req.params.assignment_id}, function (err, assignment) {
+    Moto.remove( {'motoId': req.params.moto_id}, function (err, moto) {
       if (err) { res.send(err); }
       res.json({ message: 'Successfully deleted' });
     });
   });
 
-*/
+
 
 
 /*************************** MIDDLEWARE CORS ********************************/
