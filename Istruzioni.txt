@@ -14,9 +14,12 @@ Dopodichè, possiamo accederci e fare le nostre cose.
 - scrivere process.env.PORT sul server ricordando di mettere PORT maiuscolo.
 
 
-*********** COLLEGARSI AD HEROKU E A GIT: **************
+*********** COLLEGARSI AD HEROKU: **************
 - Seguire la procedura riportata sul sito per collegarsi ad Heroku.
 - Da Heroku (interfaccia web) collegare l'app appena creata al proprio account Git.
+
+************ COLLEGARSI A GIT: ***************
+- creare il file .gitignore:   -->   ren a.gitignore .gitignore
 - Da Git (interfaccia web), creare un nuovo repository.
 - Appena creato il repository, seguire le istruzioni riportate su Git (interfaccia web) per collegare il proprio repository in locale con il repository in remoto appena creato.
 
@@ -30,6 +33,15 @@ Aggiungere le seguenti cose al package.json:
 "scripts": {
     "test": "jest"
   }
+
+Eseguire da riga di comando:
+npm install jest
+
+Eseguire da riga di comando:
+npm install node-fetch
+
+Per eseguire i test, digitare:
+npm test
 
 Dopodiche: ?????(DA VERIFICARE!!!!)
 - assicurarsi di aver fatto l'export del modulo del router nel file server.js, scrivendo:  -->   module.exports = router;

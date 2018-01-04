@@ -4,13 +4,18 @@
   "description": "",
   "main": "moto.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.2",
-    "mongoose": "^5.0.0-rc1"
+    "jest": "^22.0.4",
+    "mongoose": "^5.0.0-rc1",
+    "node-fetch": "^1.7.3"
+  },
+  "jest": {
+    "verbose": true,
+    "collectCoverage": true
   }
 }

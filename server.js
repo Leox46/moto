@@ -13,8 +13,8 @@ var options = {
     //user: 'test', // non obbligatori, dato che sono già presenti nell'URI.
     //pass: 'test'
   };
-//mongoose.connect('mongodb://user:password@ds149865.mlab.com:49865/db_test', options); // MLAB
-mongoose.connect('mongodb://localhost:27017/GENERAL', options) // LOCALE
+mongoose.connect('mongodb://user:password@ds149865.mlab.com:49865/db_test', options); // MLAB
+//mongoose.connect('mongodb://localhost:27017/GENERAL', options) // LOCALE
 const db = mongoose.connection;
 db.on('error', err => {
   console.error(`Error while connecting to DB: ${err.message}`);

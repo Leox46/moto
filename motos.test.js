@@ -24,7 +24,7 @@ const postMotos = function (newMoto) {
     })
 }
 
-const putmotos = function (motoId, moto) {
+const putMotos = function (motoId, moto) {
     return fetch(motosRoot+'/'+motoId, {
         method: 'PUT',
         headers: {
@@ -92,7 +92,7 @@ test('delete by motoId - basic response', () => {
 });
 
 test('get all motos - basic response', () => {
-  return getManyAssignments()
+  return getManyMotos()
     .then(response => { expect(response.status).toBe(200) })
     //.catch(e => {console.log(e)})
 });
