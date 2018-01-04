@@ -86,7 +86,7 @@ router.route('/motos')
   });
 
 /*
-// route /bears/bear
+// route /motos/moto
 router.route('/assignments/:assignment_id')
 
   // get the assignment with that id
