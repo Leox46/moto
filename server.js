@@ -39,52 +39,53 @@ router.get('/', function (req, res) {
   res.json({ message: 'Welcome to our api!' });
 });
 
-/*
-router.route('/assignments')
 
-  // create a assignment
-  // accessed at POST http://localhost:8080/api/assignments
+router.route('/motos')
+
+  // create a moto
+  // accessed at POST http://localhost:8080/api/motos
   .post(function (req, res) {
     res.status = 200;
     res.setHeader('Content-Type', 'application/json');
     // create a new instance of the Bear model
-    var assignment = new Assignment();
-    // set the bears name (comes from the request)
-    assignment.assignmentId = req.body.assignmentId;
-  	assignment.studentId = req.body.studentId;
-  	assignment.assignment = req.body.assignment;
-  	assignment.assignmentType = req.body.assignmentType;
-  	assignment.assignmentValuation = req.body.assignmentValuation;
+    var moto = new Moto();
+    // set the moto name (comes from the request)
+    moto.motoId = req.body.motoId;
+  	moto.manufactor = req.body.manufactor;
+  	moto.model = req.body.model;
+  	moto.displacement = req.body.displacement;
+  	moto.power = req.body.power;
 
-    // save the assignment and check for errors
-    assignment.save(function (err) {
+    // save the moto and check for errors
+    moto.save(function (err) {
       if (err) { res.send(err); }
-      res.json(assignment);
+      res.json(moto);
     });
   })
 
-  // get all the assignments
-  // accessed at GET http://localhost:8080/api/assignments
+  // get all the motos
+  // accessed at GET http://localhost:8080/api/motos
   // variante: questo server risponde anche se gli viene specificata come query
-  // del GET lo studentId, ritornando tutti gli assignment con lo studentId specificato.
-  // accessed at GET http://localhost:8080/api/assignments/?studentId=177928
+  // del GET lo studentId, ritornando tutti gli moto con lo studentId specificato.
+  // accessed at GET http://localhost:8080/api/motos/?studentId=177928
   .get(function (req, res) {
     res.status = 200;
     res.setHeader('Content-Type', 'application/json');
-    if(req.query.studentId == null) { // se NON è specificato lo studentId, allora ritorno tutti gli assignments
-      Assignment.find(function (err, assignments) {
+    if(req.query.studentId == null) { // se NON è specificato lo studentId, allora ritorno tutti gli motos
+      Moto.find(function (err, motos) {
         if (err) { res.send(err); }
-        res.json(assignments);
+        res.json(motos);
       });
     }
     else {
-      Assignment.find( {'studentId': req.query.studentId}, function (err, assignments) {
+      Moto.find( {'studentId': req.query.studentId}, function (err, motos) {
         if (err) { res.send(err); }
-        res.json(assignments);
+        res.json(motos);
       });
     }
   });
 
+/*
 // route /bears/bear
 router.route('/assignments/:assignment_id')
 
