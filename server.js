@@ -14,7 +14,7 @@ var options = {
     //pass: 'test'
   };
 mongoose.connect('mongodb://user:password@ds149865.mlab.com:49865/db_test', options); // MLAB
-//mongoose.connect('mongodb://localhost:27017/BEARS', options) // LOCALE
+//mongoose.connect('mongodb://localhost:27017/MOTOS', options) // LOCALE
 const db = mongoose.connection;
 db.on('error', err => {
   console.error(`Error while connecting to DB: ${err.message}`);
@@ -47,7 +47,7 @@ router.route('/motos')
   .post(function (req, res) {
     res.status = 200;
     res.setHeader('Content-Type', 'application/json');
-    // create a new instance of the Bear model
+    // create a new instance of the Moto model
     var moto = new Moto();
     // set the moto name (comes from the request)
     moto.motoId = req.body.motoId;
@@ -105,7 +105,7 @@ router.route('/motos/:moto_id')
   .put(function (req, res) {
     res.status = 200;
     res.setHeader('Content-Type', 'application/json');
-    // use our bear model to find the bear we want
+    // use our moto model to find the moto we want
     // ATTENZIONE!: usare findOne, e non find, altrimenti ritorna una collezione di oggetti, e bisogna estrarre il primo!
     Moto.findOne( {'motoId': req.params.moto_id}, function (err, moto) {
       if (err) { res.send(err); }
