@@ -1,10 +1,10 @@
 {
   "name": "moto",
   "version": "1.0.0",
-  "description": "",
   "main": "moto.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -17,5 +17,15 @@
   "jest": {
     "verbose": true,
     "collectCoverage": true
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Leox46/moto.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Leox46/moto/issues"
+  },
+  "homepage": "https://github.com/Leox46/moto#readme",
+  "description": ""
 }
