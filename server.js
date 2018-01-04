@@ -66,19 +66,19 @@ router.route('/motos')
   // get all the motos
   // accessed at GET http://localhost:8080/api/motos
   // variante: questo server risponde anche se gli viene specificata come query
-  // del GET lo studentId, ritornando tutti gli moto con lo studentId specificato.
-  // accessed at GET http://localhost:8080/api/motos/?studentId=177928
+  // del GET il manufactor, ritornando tutti gli moto con lo manufactor specificato.
+  // accessed at GET http://localhost:8080/api/motos/?manufactor=Honda
   .get(function (req, res) {
     res.status = 200;
     res.setHeader('Content-Type', 'application/json');
-    if(req.query.studentId == null) { // se NON è specificato lo studentId, allora ritorno tutti gli motos
+    if(req.query.manufactor == null) { // se NON è specificato lo studentId, allora ritorno tutti gli motos
       Moto.find(function (err, motos) {
         if (err) { res.send(err); }
         res.json(motos);
       });
     }
     else {
-      Moto.find( {'studentId': req.query.studentId}, function (err, motos) {
+      Moto.find( {'manufactor': req.query.manufactor}, function (err, motos) {
         if (err) { res.send(err); }
         res.json(motos);
       });
@@ -110,16 +110,22 @@ router.route('/motos/:moto_id')
     Moto.findOne( {'motoId': req.params.moto_id}, function (err, moto) {
       if (err) { res.send(err); }
       // update the motos info
-      moto.motoId = req.body.motoId;
-    	moto.manufactor = req.body.manufactor;
-    	moto.model = req.body.model;
-    	moto.displacement = req.body.displacement;
-    	moto.power = req.body.power;
-      // save the moto
-      moto.save(function (err) {
-        if (err) { res.send(err); }
-        res.json(moto);
-      });
+      if(moto != null){
+        if(req.body.motoId != null) moto.motoId = req.body.motoId;
+      	if(req.body.manufactor != null) moto.manufactor = req.body.manufactor;
+      	if(req.body.model != null) moto.model = req.body.model;
+      	if(req.body.displacement != null) moto.displacement = req.body.displacement;
+      	if(req.body.power != null) moto.power = req.body.power;
+        // save the moto
+        moto.save(function (err) {
+          if (err) { res.send(err); }
+          res.json(moto);
+        });
+      }
+      else{
+        res.status = 404;
+        res.json({ error: { message: "Item Not Found" } });
+      }
     });
   })
 
